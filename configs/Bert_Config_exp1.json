@@ -1,0 +1,15 @@
+{
+  "model_path": "./bert-base-chinese",
+  "data_dir": "./data",
+  "train_file": "weibo/train.txt",
+  "dev_file": "weibo/dev.txt",
+  "test_file": "weibo/test.txt",
+  "dropout_rate": 0.2,
+  "max_len": 128,
+  "batch_size": 16,
+  "learning_rate": 2e-5,
+  "epochs": 30,
+  "seed": 42,
+  "save_path": "checkpoints/best_weibo_BERT_ext.pth",
+  "align_type": "ignore"
+}
