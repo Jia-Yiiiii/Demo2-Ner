@@ -158,25 +158,22 @@ python trainer.py configs/Bert_Config_exp4.json
 
 测试集结果：
 
-| 类型    | 精确率 | 召回率 | F1     | 样本数 |
-|---------|--------|--------|--------|--------|
-| LOC     | 0.9405 | 0.9003 | 0.9200 | 632    |
-| ORG     | 0.8478 | 0.9142 | 0.8797 | 268    |
-| PER     | 0.9586 | 0.9612 | 0.9599 | 361    |
-| micro   | 0.9244 | 0.9207 | 0.9225 | 1261   |
-| macro   | 0.9156 | 0.9252 | 0.9199 | 1261   |
+| 类型 | 精确率 | 召回率 | F1 | 样本数 |
+| :--- | :--- | :--- | :--- | :--- |
+| LOC | 0.9377 | 0.9051 | 0.9211 | 632 |
+| ORG | 0.8264 | 0.8881 | 0.8561 | 268 |
+| PER | 0.9449 | 0.9501 | 0.9475 | 361 |
+| micro | 0.9144 | 0.9144 | 0.9144 | 1261 |
+| macro | 0.9030 | 0.9144 | 0.9082 | 1261 |
+
+
 
 训练曲线：
+<img width="533" height="305" alt="image" src="https://github.com/user-attachments/assets/651aceaa-8724-463c-981b-8d2130600634" />
+<img width="1567" height="597" alt="image" src="https://github.com/user-attachments/assets/48fa3098-98af-4306-8582-0c33253431b8" />
+<img width="1058" height="651" alt="image" src="https://github.com/user-attachments/assets/47f73a7a-2254-4366-85db-e860f8ca5484" />
+<img width="1563" height="300" alt="image" src="https://github.com/user-attachments/assets/a880cc2d-ca49-49b2-842b-53d9a1fda4d1" />
 
-<img width="580" height="301" alt="image" src="https://github.com/user-attachments/assets/48d00b33-aac0-476e-a15a-4a788fa61e1d" />
-
-<img width="1582" height="602" alt="image" src="https://github.com/user-attachments/assets/3ca5b1ab-4afa-4e58-b0c8-c7059944af39" />
-
-<img width="1582" height="640" alt="image" src="https://github.com/user-attachments/assets/764598f0-f7af-4970-8447-55aaffb32d5a" />
-
-
-
-实验日志：https://swanlab.cn/@2225/bert-ner1/runs/x9w7la1y/overview
 
 ---
 
@@ -188,23 +185,24 @@ python trainer.py configs/Bert_Config_exp5.json
 ```
 
 测试集结果：
+| 类型 | 精确率 | 召回率 | F1 | 样本数 |
+| :--- | :--- | :--- | :--- | :--- |
+| LOC | 0.9413 | 0.913 | 0.9269 | 632 |
+| ORG | 0.8561 | 0.8881 | 0.8718 | 268 |
+| PER | 0.9766 | 0.9252 | 0.9502 | 361 |
+| micro | 0.9319 | 0.9112 | 0.9214 | 1261 |
+| macro | 0.9247 | 0.9087 | 0.9163 | 1261 |
 
-| 类型    | 精确率 | 召回率 | F1     | 样本数 |
-|---------|--------|--------|--------|--------|
-| LOC     | 0.9536 | 0.9098 | 0.9312 | 632    |
-| ORG     | 0.8445 | 0.8918 | 0.8675 | 268    |
-| PER     | 0.9474 | 0.9474 | 0.9474 | 361    |
-| micro   | 0.9270 | 0.9167 | 0.9219 | 1261   |
-| macro   | 0.9152 | 0.9163 | 0.9154 | 1261   |
+
 
 训练曲线：
+<img width="532" height="297" alt="image" src="https://github.com/user-attachments/assets/5d59c1c9-f304-4eab-acba-d6b2f82ab39e" />
+<img width="1571" height="591" alt="image" src="https://github.com/user-attachments/assets/16ad5b5e-7f41-4c64-b439-c8777941a56a" />
+<img width="1060" height="641" alt="image" src="https://github.com/user-attachments/assets/4c92fce3-0e8d-496e-b417-499f3d8844e7" />
+<img width="1576" height="302" alt="image" src="https://github.com/user-attachments/assets/8de7bd09-ffce-401a-94fe-c8ca912e5ebb" />
 
-<img width="535" height="295" alt="image" src="https://github.com/user-attachments/assets/3ef577ad-a4b7-473a-996d-669a468fa1a9" />
-<img width="1562" height="597" alt="image" src="https://github.com/user-attachments/assets/5148458b-7a27-4bc7-8075-17ac9a8817c2" />
-<img width="1572" height="635" alt="image" src="https://github.com/user-attachments/assets/bdd76291-d203-445c-8395-feec915a1a81" />
 
 
-实验日志：https://swanlab.cn/@2225/bert-ner1/runs/ov43sjgr/overview
 
 ---
 
@@ -219,29 +217,30 @@ python trainer.py configs/Bert_Config_exp1.json
 
 测试集结果：
 
-| 类型       | 精确率   | 召回率   | F1       | 样本数 |
-|------------|----------|----------|----------|--------|
-| GPE.NAM    | 0.7358   | 0.8478   | 0.7879   | 46     |
-| GPE.NOM    | 0.0000   | 0.0000   | 0.0000   | 2      |
-| LOC.NAM    | 0.3103   | 0.4737   | 0.3750   | 19     |
-| LOC.NOM    | 0.3636   | 0.4444   | 0.4000   | 9      |
-| ORG.NAM    | 0.7500   | 0.3077   | 0.4364   | 39     |
-| ORG.NOM    | 0.5714   | 0.5000   | 0.5333   | 16     |
-| PER.NAM    | 0.7080   | 0.7273   | 0.7175   | 110    |
-| PER.NOM    | 0.7126   | 0.7126   | 0.7126   | 167    |
-| micro      | 0.6725   | 0.6642   | 0.6683   | 408    |
-| macro      | 0.5190   | 0.5017   | 0.4953   | 408    |
+| 类型 | 精确率 | 召回率 | F1 | 样本数 |
+| :--- | :--- | :--- | :--- | :--- |
+| GPE. NAM | 0.7843 | 0.8696 | 0.8247 | 46 |
+| GPE. NOM | 0.0 | 0.0 | 0.0 | 2 |
+| LOC. NAM | 0.2778 | 0.2632 | 0.2703 | 19 |
+| LOC. NOM | 0.4167 | 0.5556 | 0.4762 | 9 |
+| ORG. NAM | 0.5128 | 0.5128 | 0.5128 | 39 |
+| ORG. NOM | 0.5 | 0.5 | 0.5 | 16 |
+| PER. NAM | 0.7545 | 0.7545 | 0.7545 | 110 |
+| PER. NOM | 0.6811 | 0.7545 | 0.7159 | 167 |
+| micro | 0.6659 | 0.7034 | 0.6841 | 408 |
+| macro | 0.4909 | 0.5263 | 0.5068 | 408 |
+
+
 
 训练曲线：
 
-<img width="523" height="301" alt="image" src="https://github.com/user-attachments/assets/fc026ddd-3821-4ca7-b38c-c5987fccbd1b" />
+<img width="520" height="296" alt="image" src="https://github.com/user-attachments/assets/8d0735be-21d6-4f48-a3f8-658dba8dec25" />
+<img width="1610" height="597" alt="image" src="https://github.com/user-attachments/assets/2f0d1b38-adba-4f07-b492-139ca6605f83" />
+<img width="1065" height="635" alt="image" src="https://github.com/user-attachments/assets/fdeb4a17-7dbc-4290-a3c1-36cee6aa44fc" />
+<img width="1582" height="307" alt="image" src="https://github.com/user-attachments/assets/44cebc81-0f44-4064-b62d-50ba36560d4b" />
 
-<img width="1571" height="588" alt="image" src="https://github.com/user-attachments/assets/1b7d0480-8109-464f-97aa-edc8f414318e" />
-
-<img width="1575" height="636" alt="image" src="https://github.com/user-attachments/assets/b08c89b6-e996-4836-bd9b-0aaa7c00664a" />
 
 
-实验日志：https://swanlab.cn/@2225/bert-ner1/runs/wh0taazt/overview
 
 ---
 
@@ -254,28 +253,28 @@ python trainer.py configs/Bert_Config_exp2.json
 
 测试集结果：
 
-| 类型       | 精确率   | 召回率   | F1       | 样本数 |
-|------------|----------|----------|----------|--------|
-| GPE.NAM    | 0.7455   | 0.8913   | 0.8119   | 46     |
-| GPE.NOM    | 0.0000   | 0.0000   | 0.0000   | 2      |
-| LOC.NAM    | 0.3684   | 0.3684   | 0.3684   | 19     |
-| LOC.NOM    | 0.4286   | 0.3333   | 0.3750   | 9      |
-| ORG.NAM    | 0.4211   | 0.4103   | 0.4156   | 39     |
-| ORG.NOM    | 0.7143   | 0.6250   | 0.6667   | 16     |
-| PER.NAM    | 0.7241   | 0.7636   | 0.7434   | 110    |
-| PER.NOM    | 0.7024   | 0.7066   | 0.7045   | 167    |
-| micro      | 0.6691   | 0.6838   | 0.6764   | 408    |
-| macro      | 0.5130   | 0.5123   | 0.5107   | 408    |
+| 类型 | 精确率 | 召回率 | F1 | 样本数 |
+| :--- | :--- | :--- | :--- | :--- |
+| GPE. NAM | 0.7091 | 0.8478 | 0.7723 | 46 |
+| GPE. NOM | 0.0 | 0.0 | 0.0 | 2 |
+| LOC. NAM | 0.45 | 0.4737 | 0.4615 | 19 |
+| LOC. NOM | 0.2727 | 0.3333 | 0.3 | 9 |
+| ORG. NAM | 0.5588 | 0.4872 | 0.5205 | 39 |
+| ORG. NOM | 0.5 | 0.4375 | 0.4667 | 16 |
+| PER. NAM | 0.7652 | 0.8 | 0.7822 | 110 |
+| PER. NOM | 0.7056 | 0.7605 | 0.732 | 167 |
+| micro | 0.6807 | 0.7157 | 0.6977 | 408 |
+| macro | 0.4952 | 0.5175 | 0.5044 | 408 |
+
+
 
 训练曲线：
 
-<img width="523" height="290" alt="image" src="https://github.com/user-attachments/assets/ce1fbcc0-171a-4777-9cc1-c93be3dc8ad6" />
-<img width="1565" height="582" alt="image" src="https://github.com/user-attachments/assets/e03ecbc4-6b6f-49cf-ae65-357bab117991" />
-<img width="1577" height="637" alt="image" src="https://github.com/user-attachments/assets/12f2f900-7f94-47cd-9b8a-fe95e0f0a7c1" />
+<img width="536" height="292" alt="image" src="https://github.com/user-attachments/assets/0ff7803c-a487-4707-a3a4-820c2dd96ce8" />
+<img width="1566" height="597" alt="image" src="https://github.com/user-attachments/assets/aa5dcc17-6dba-4093-8f7a-c053385fc488" />
+<img width="1055" height="638" alt="image" src="https://github.com/user-attachments/assets/0ffcf4cb-3add-4c07-80b3-6f344b78aecf" />
+<img width="1576" height="311" alt="image" src="https://github.com/user-attachments/assets/8eeb9b01-f994-48dd-9813-3bffd32b1c4b" />
 
-
-
-实验日志：https://swanlab.cn/@2225/bert-ner1/runs/zdet0alr/overview
 ---
 
 #### (3) chinese-bert-wwm (same)
@@ -286,29 +285,27 @@ python trainer.py configs/Bert_Config_exp3.json
 ```
 
 测试集结果：
-| 类型       | 精确率   | 召回率   | F1       | 样本数 |
-|------------|----------|----------|----------|--------|
-| GPE.NAM    | 0.7736   | 0.8913   | 0.8283   | 46     |
-| GPE.NOM    | 0.0000   | 0.0000   | 0.0000   | 2      |
-| LOC.NAM    | 0.3750   | 0.3158   | 0.3429   | 19     |
-| LOC.NOM    | 0.2727   | 0.3333   | 0.3000   | 9      |
-| ORG.NAM    | 0.5000   | 0.4615   | 0.4800   | 39     |
-| ORG.NOM    | 0.5294   | 0.5625   | 0.5455   | 16     |
-| PER.NAM    | 0.7358   | 0.7091   | 0.7222   | 110    |
-| PER.NOM    | 0.6919   | 0.7126   | 0.7021   | 167    |
-| micro      | 0.6650   | 0.6716   | 0.6683   | 408    |
-| macro      | 0.4848   | 0.4983   | 0.4901   | 408    |
+| 类型 | 精确率 | 召回率 | F1 | 样本数 |
+| :--- | :--- | :--- | :--- | :--- |
+| GPE. NAM | 0.7455 | 0.8913 | 0.8119 | 46 |
+| GPE. NOM | 0.0 | 0.0 | 0.0 | 2 |
+| LOC. NAM | 0.5 | 0.3684 | 0.4242 | 19 |
+| LOC. NOM | 0.4286 | 0.3333 | 0.375 | 9 |
+| ORG. NAM | 0.5625 | 0.4615 | 0.507 | 39 |
+| ORG. NOM | 0.5625 | 0.5625 | 0.5625 | 16 |
+| PER. NAM | 0.72 | 0.6545 | 0.6857 | 110 |
+| PER. NOM | 0.6538 | 0.7126 | 0.6819 | 167 |
+| micro | 0.6626 | 0.6593 | 0.6609 | 408 |
+| macro | 0.5216 | 0.4980 | 0.5060 | 408 |
+
 
 训练曲线：
-
-<img width="567" height="297" alt="image" src="https://github.com/user-attachments/assets/437fc200-5bec-4ba8-83c4-6567be2f1765" />
-
-<img width="1560" height="597" alt="image" src="https://github.com/user-attachments/assets/82a50160-cc52-4bec-b110-90990d127adf" />
-
-<img width="1580" height="637" alt="image" src="https://github.com/user-attachments/assets/6a399fa9-3ccf-4260-9b92-f9dd8f21ca4f" />
+<img width="540" height="295" alt="image" src="https://github.com/user-attachments/assets/d63ab067-919c-4ed2-a5dd-b0ddaaab340f" />
+<img width="1573" height="597" alt="image" src="https://github.com/user-attachments/assets/98432cc0-d966-44e7-9e0b-4ce2fa38af2a" />
+<img width="1052" height="623" alt="image" src="https://github.com/user-attachments/assets/902c2d4f-13c5-467b-97be-6d45b47cd448" />
+<img width="1576" height="307" alt="image" src="https://github.com/user-attachments/assets/62444637-8644-466b-b473-6a89964a8ac4" />
 
 
-实验日志：https://swanlab.cn/@2225/bert-ner1/runs/uowccrdd/overview
 
 ---
 
@@ -332,7 +329,7 @@ BERT-NER-DEMO2/
 │   ├── Bert_Config_exp4.json
 │   ├── Bert_Config_exp5.json
 │   └── label2id.json
-├── data.py
+├── data_process.py
 ├── model.py
 ├── trainer.py
 ├── utils.py
