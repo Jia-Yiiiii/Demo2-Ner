@@ -172,16 +172,25 @@ python trainer.py configs/Bert_Config_exp4.json
 
 #### 训练曲线
 
-| 训练曲线 |
-| :---: |
-| <img width="500" alt="image" src="https://github.com/user-attachments/assets/651aceaa-8724-463c-981b-8d2130600634" /> |
-| 图 4-1 训练曲线 1 |
-| <img width="700" alt="image" src="https://github.com/user-attachments/assets/48fa3098-98af-4306-8582-0c33253431b8" /> |
-| 图 4-2 训练曲线 2 |
-| <img width="700" alt="image" src="https://github.com/user-attachments/assets/47f73a7a-2254-4366-85db-e860f8ca5484" /> |
-| 图 4-3 训练曲线 3 |
-| <img width="700" alt="image" src="https://github.com/user-attachments/assets/a880cc2d-ca49-49b2-842b-53d9a1fda4d1" /> |
-| 图 4-4 训练曲线 4 |
+<div align="center">
+  <img width="500" alt="image" src="https://github.com/user-attachments/assets/651aceaa-8724-463c-981b-8d2130600634" />
+  <p style="font-size: 13px; color:#666;">图 4-1 训练曲线 1</p>
+</div>
+
+<div align="center">
+  <img width="700" alt="image" src="https://github.com/user-attachments/assets/48fa3098-98af-4306-8582-0c33253431b8" />
+  <p style="font-size: 13px; color:#666;">图 4-2 训练曲线 2</p>
+</div>
+
+<div align="center">
+  <img width="700" alt="image" src="https://github.com/user-attachments/assets/47f73a7a-2254-4366-85db-e860f8ca5484" />
+  <p style="font-size: 13px; color:#666;">图 4-3 训练曲线 3</p>
+</div>
+
+<div align="center">
+  <img width="700" alt="image" src="https://github.com/user-attachments/assets/a880cc2d-ca49-49b2-842b-53d9a1fda4d1" />
+  <p style="font-size: 13px; color:#666;">图 4-4 训练曲线 4</p>
+</div>
 
 
 
