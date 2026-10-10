@@ -19,7 +19,6 @@
 # 下载 bert-base-chinese
 import os
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-
 from huggingface_hub import hf_hub_download
 
 repo_id = "bert-base-chinese"
@@ -35,14 +34,17 @@ file_list = [
 ]
 
 for filename in file_list:
-
+    print(f"正在下载: {filename}")
     hf_hub_download(
         repo_id=repo_id,
         filename=filename,
         local_dir=local_folder,
-        force_download=True
+        # force_download=True, # 初次下载注释掉，避免重复下载
+        force_download=False,
+        local_dir_use_symlinks=False
     )
 print("全部文件下载完成！")
+
 
 # 下载 hfl/chinese-bert-wwm
 import os
