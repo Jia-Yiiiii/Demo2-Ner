@@ -170,11 +170,19 @@ python trainer.py configs/Bert_Config_exp4.json
 
 
 
-训练曲线：
-<img width="533" height="305" alt="image" src="https://github.com/user-attachments/assets/651aceaa-8724-463c-981b-8d2130600634" />
-<img width="1567" height="597" alt="image" src="https://github.com/user-attachments/assets/48fa3098-98af-4306-8582-0c33253431b8" />
-<img width="1058" height="651" alt="image" src="https://github.com/user-attachments/assets/47f73a7a-2254-4366-85db-e860f8ca5484" />
-<img width="1563" height="300" alt="image" src="https://github.com/user-attachments/assets/a880cc2d-ca49-49b2-842b-53d9a1fda4d1" />
+#### 训练曲线
+
+| 训练曲线 |
+| :---: |
+| <img width="500" alt="image" src="https://github.com/user-attachments/assets/651aceaa-8724-463c-981b-8d2130600634" /> |
+| 图 4-1 训练曲线 1 |
+| <img width="700" alt="image" src="https://github.com/user-attachments/assets/48fa3098-98af-4306-8582-0c33253431b8" /> |
+| 图 4-2 训练曲线 2 |
+| <img width="700" alt="image" src="https://github.com/user-attachments/assets/47f73a7a-2254-4366-85db-e860f8ca5484" /> |
+| 图 4-3 训练曲线 3 |
+| <img width="700" alt="image" src="https://github.com/user-attachments/assets/a880cc2d-ca49-49b2-842b-53d9a1fda4d1" /> |
+| 图 4-4 训练曲线 4 |
+
 
 
 ---
