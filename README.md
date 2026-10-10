@@ -208,11 +208,23 @@ python trainer.py configs/Bert_Config_exp5.json
 
 
 
-训练曲线：
-<img width="532" height="297" alt="image" src="https://github.com/user-attachments/assets/5d59c1c9-f304-4eab-acba-d6b2f82ab39e" />
-<img width="1571" height="591" alt="image" src="https://github.com/user-attachments/assets/16ad5b5e-7f41-4c64-b439-c8777941a56a" />
-<img width="1060" height="641" alt="image" src="https://github.com/user-attachments/assets/4c92fce3-0e8d-496e-b417-499f3d8844e7" />
-<img width="1576" height="302" alt="image" src="https://github.com/user-attachments/assets/8de7bd09-ffce-401a-94fe-c8ca912e5ebb" />
+#### 训练曲线
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/5d59c1c9-f304-4eab-acba-d6b2f82ab39e" />
+
+图 4-5 训练曲线 5
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/16ad5b5e-7f41-4c64-b439-c8777941a56a" />
+
+图 4-6 训练曲线 6
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/4c92fce3-0e8d-496e-b417-499f3d8844e7" />
+
+图 4-7 训练曲线 7
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/8de7bd09-ffce-401a-94fe-c8ca912e5ebb" />
+
+图 4-8 训练曲线 8
 
 
 
@@ -245,12 +257,23 @@ python trainer.py configs/Bert_Config_exp1.json
 
 
 
-训练曲线：
+#### 训练曲线
 
-<img width="520" height="296" alt="image" src="https://github.com/user-attachments/assets/8d0735be-21d6-4f48-a3f8-658dba8dec25" />
-<img width="1610" height="597" alt="image" src="https://github.com/user-attachments/assets/2f0d1b38-adba-4f07-b492-139ca6605f83" />
-<img width="1065" height="635" alt="image" src="https://github.com/user-attachments/assets/fdeb4a17-7dbc-4290-a3c1-36cee6aa44fc" />
-<img width="1582" height="307" alt="image" src="https://github.com/user-attachments/assets/44cebc81-0f44-4064-b62d-50ba36560d4b" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/8d0735be-21d6-4f48-a3f8-658dba8dec25" />
+
+图 4-9 训练曲线 9
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/2f0d1b38-adba-4f07-b492-139ca6605f83" />
+
+图 4-10 训练曲线 10
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/fdeb4a17-7dbc-4290-a3c1-36cee6aa44fc" />
+
+图 4-11 训练曲线 11
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/44cebc81-0f44-4064-b62d-50ba36560d4b" />
+
+图 4-12 训练曲线 12
 
 
 
@@ -281,12 +304,23 @@ python trainer.py configs/Bert_Config_exp2.json
 
 
 
-训练曲线：
+#### 训练曲线
 
-<img width="536" height="292" alt="image" src="https://github.com/user-attachments/assets/0ff7803c-a487-4707-a3a4-820c2dd96ce8" />
-<img width="1566" height="597" alt="image" src="https://github.com/user-attachments/assets/aa5dcc17-6dba-4093-8f7a-c053385fc488" />
-<img width="1055" height="638" alt="image" src="https://github.com/user-attachments/assets/0ffcf4cb-3add-4c07-80b3-6f344b78aecf" />
-<img width="1576" height="311" alt="image" src="https://github.com/user-attachments/assets/8eeb9b01-f994-48dd-9813-3bffd32b1c4b" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/0ff7803c-a487-4707-a3a4-820c2dd96ce8" />
+
+图 4-13 训练曲线 13
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/aa5dcc17-6dba-4093-8f7a-c053385fc488" />
+
+图 4-14 训练曲线 14
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/0ffcf4cb-3add-4c07-80b3-6f344b78aecf" />
+
+图 4-15 训练曲线 15
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/8eeb9b01-f994-48dd-9813-3bffd32b1c4b" />
+
+图 4-16 训练曲线 16
 
 ---
 
@@ -312,11 +346,24 @@ python trainer.py configs/Bert_Config_exp3.json
 | macro | 0.5216 | 0.4980 | 0.5060 | 408 |
 
 
-训练曲线：
-<img width="540" height="295" alt="image" src="https://github.com/user-attachments/assets/d63ab067-919c-4ed2-a5dd-b0ddaaab340f" />
-<img width="1573" height="597" alt="image" src="https://github.com/user-attachments/assets/98432cc0-d966-44e7-9e0b-4ce2fa38af2a" />
-<img width="1052" height="623" alt="image" src="https://github.com/user-attachments/assets/902c2d4f-13c5-467b-97be-6d45b47cd448" />
-<img width="1576" height="307" alt="image" src="https://github.com/user-attachments/assets/62444637-8644-466b-b473-6a89964a8ac4" />
+#### 训练曲线
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/d63ab067-919c-4ed2-a5dd-b0ddaaab340f" />
+
+图 4-17 训练曲线 17
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/98432cc0-d966-44e7-9e0b-4ce2fa38af2a" />
+
+图 4-18 训练曲线 18
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/902c2d4f-13c5-467b-97be-6d45b47cd448" />
+
+图 4-19 训练曲线 19
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/62444637-8644-466b-b473-6a89964a8ac4" />
+
+图 4-20 训练曲线 20
+
 
 
 
