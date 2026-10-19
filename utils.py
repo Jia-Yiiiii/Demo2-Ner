@@ -12,6 +12,23 @@ def set_seed(seed=42):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
+
+def decode_predict(input_ids, preds, labels, attention_mask, id2label):
+    all_pred = []
+    all_label = []
+    for i in range(len(input_ids)):
+        ps = []
+        ls = []
+        L = attention_mask[i].sum().item()
+        for j in range(L):
+            if labels[i][j].item() != -100:
+                ps.append(id2label.get(preds[i][j].item(), 'O'))
+                ls.append(id2label.get(labels[i][j].item(), 'O'))
+        all_pred.append(ps)
+        all_label.append(ls)
+    return all_pred, all_label
+
+
 class NEREvaluator:
 
     def extract_entities(self, labels):
@@ -68,16 +85,10 @@ class NEREvaluator:
 
         p, r, f1, _, _, _ = self.compute_metrics(y_true, y_pred)
 
-        all_labels = []
-        for label in type_true.keys():
-            if label not in all_labels:
-                all_labels.append(label)
-        for label in type_pred.keys():
-            if label not in all_labels:
-                all_labels.append(label)
-        all_labels.sort()
+        all_labels = sorted(set(list(type_true.keys()) + list(type_pred.keys())))
 
-        print("类型    精确率  召回率  F1  样本数")
+        print(f"{'类型':<10} {'精确率':>8} {'召回率':>8} {'F1':>8} {'样本数':>8}")
+        print("-" * 48)
         for label in all_labels:
             tp_c = type_tp.get(label, 0)
             pred_c = type_pred.get(label, 0)
@@ -85,43 +96,31 @@ class NEREvaluator:
             p_c = tp_c / pred_c if pred_c > 0 else 0
             r_c = tp_c / true_c if true_c > 0 else 0
             f_c = 2 * p_c * r_c / (p_c + r_c) if (p_c + r_c) > 0 else 0
-            print(label, round(p_c, 4), round(r_c, 4), round(f_c, 4), true_c)
+            print(f"{label:<10} {p_c:>8.4f} {r_c:>8.4f} {f_c:>8.4f} {true_c:>8d}")
 
-        print("micro", round(p, 4), round(r, 4), round(f1, 4), sum(type_true.values()))
+        print("-" * 48)
+        total_samples = sum(type_true.values())
+        print(f"{'micro':<10} {p:>8.4f} {r:>8.4f} {f1:>8.4f} {total_samples:>8d}")
 
-        macro_p_sum = 0
-        macro_r_sum = 0
-        macro_f_sum = 0
-        count = 0
-        for label in all_labels:
-            tp_c = type_tp.get(label, 0)
-            pred_c = type_pred.get(label, 0)
-            true_c = type_true.get(label, 0)
-            p_c = tp_c / pred_c if pred_c > 0 else 0
-            r_c = tp_c / true_c if true_c > 0 else 0
-            f_c = 2 * p_c * r_c / (p_c + r_c) if (p_c + r_c) > 0 else 0
-            macro_p_sum += p_c
-            macro_r_sum += r_c
-            macro_f_sum += f_c
-            count += 1
+        count = len(all_labels)
+        if count > 0:
+            macro_p_sum = 0
+            macro_r_sum = 0
+            macro_f_sum = 0
+            for label in all_labels:
+                tp_c = type_tp.get(label, 0)
+                pred_c = type_pred.get(label, 0)
+                true_c = type_true.get(label, 0)
+                p_c = tp_c / pred_c if pred_c > 0 else 0
+                r_c = tp_c / true_c if true_c > 0 else 0
+                f_c = 2 * p_c * r_c / (p_c + r_c) if (p_c + r_c) > 0 else 0
+                macro_p_sum += p_c
+                macro_r_sum += r_c
+                macro_f_sum += f_c
+            macro_p = macro_p_sum / count
+            macro_r = macro_r_sum / count
+            macro_f = macro_f_sum / count
+        else:
+            macro_p = macro_r = macro_f = 0
 
-        macro_p = macro_p_sum / count if count > 0 else 0
-        macro_r = macro_r_sum / count if count > 0 else 0
-        macro_f = macro_f_sum / count if count > 0 else 0
-        print("macro", round(macro_p, 4), round(macro_r, 4), round(macro_f, 4), sum(type_true.values()))
-
-
-def decode_predict(input_ids, preds, labels, attention_mask, id2label):
-    all_pred = []
-    all_label = []
-    for i in range(len(input_ids)):
-        ps = []
-        ls = []
-        L = attention_mask[i].sum().item()
-        for j in range(L):
-            if labels[i][j].item() != -100:
-                ps.append(id2label.get(preds[i][j].item(), 'O'))
-                ls.append(id2label.get(labels[i][j].item(), 'O'))
-        all_pred.append(ps)
-        all_label.append(ls)
-    return all_pred, all_label
+        print(f"{'macro':<10} {macro_p:>8.4f} {macro_r:>8.4f} {macro_f:>8.4f} {total_samples:>8d}")
