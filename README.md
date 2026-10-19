@@ -5,76 +5,9 @@
 ---
 
 ## 预训练模型本地下载与加载
-
-本项目采用**本地路径加载预训练权重**。若直接调用 `from_pretrained("模型名称")`，`transformers` 库默认自动下载缓存文件，会同时拉取 PyTorch、TensorFlow 等多框架权重，存在大量冗余文件。手动下载仅保留 PyTorch 运行必需文件，磁盘占用更小，保证运行环境统一。
-
-项目使用两组预训练模型：
-- `bert-base-chinese`
-- `hfl/chinese-bert-wwm`
-
-
 ```bash
-
-
-# 下载 bert-base-chinese
-import os
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-from huggingface_hub import hf_hub_download
-
-repo_id = "bert-base-chinese"
-local_folder = "./bert-base-chinese"
-os.makedirs(local_folder, exist_ok=True)
-
-file_list = [
-    "config.json",
-    "vocab.txt",
-    "tokenizer.json",
-    "tokenizer_config.json",
-    "pytorch_model.bin"
-]
-
-for filename in file_list:
-    print(f"正在下载: {filename}")
-    hf_hub_download(
-        repo_id=repo_id,
-        filename=filename,
-        local_dir=local_folder,
-        # force_download=True, # 初次下载注释掉，避免重复下载
-        force_download=False,
-        local_dir_use_symlinks=False
-    )
-print("全部文件下载完成！")
-
-
-# 下载 hfl/chinese-bert-wwm
-import os
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-
-from huggingface_hub import hf_hub_download
-
-repo_id = "hfl/chinese-bert-wwm"
-local_folder = "./hfl-chinese-bert-wwm"
-os.makedirs(local_folder, exist_ok=True)
-
-file_list = [
-    "config.json",
-    "vocab.txt",
-    "tokenizer.json",
-    "tokenizer_config.json",
-    "pytorch_model.bin"
-]
-
-for filename in file_list:
-    hf_hub_download(
-        repo_id=repo_id,
-        filename=filename,
-        local_dir=local_folder
-    )
-print("全部文件下载完成！")
+python modeldownload.py
 ```
-
----
-
 ## 一、数据分析
 
 ### 1.1 数据格式
@@ -159,34 +92,31 @@ python trainer.py configs/Bert_Config_exp4.json
 ```
 
 测试集结果：
-
-| 类型 | 精确率 | 召回率 | F1 | 样本数 |
-| :--- | :--- | :--- | :--- | :--- |
-| LOC | 0.9377 | 0.9051 | 0.9211 | 632 |
-| ORG | 0.8264 | 0.8881 | 0.8561 | 268 |
-| PER | 0.9449 | 0.9501 | 0.9475 | 361 |
-| micro | 0.9144 | 0.9144 | 0.9144 | 1261 |
-| macro | 0.9030 | 0.9144 | 0.9082 | 1261 |
-
+<img width="640" height="251" alt="7c4088645c68611e7155c7a54ea8da8d" src="https://github.com/user-attachments/assets/2611606a-873a-4d98-9d5a-b3ec85f76eb2" />
 
 
 #### 训练曲线
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/651aceaa-8724-463c-981b-8d2130600634" />
 
-图 4-1 训练曲线 1
+<img width="516" height="352" alt="image" src="https://github.com/user-attachments/assets/0880058d-ae21-470f-85f6-df6f06b68be1" />
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/48fa3098-98af-4306-8582-0c33253431b8" />
 
-图 4-2 训练曲线 2
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/47f73a7a-2254-4366-85db-e860f8ca5484" />
 
-图 4-3 训练曲线 3
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/a880cc2d-ca49-49b2-842b-53d9a1fda4d1" />
+<img width="1520" height="717" alt="image" src="https://github.com/user-attachments/assets/49c064db-a510-4a45-a5fc-e47e2c1415d7" />
 
-图 4-4 训练曲线 4
+
+
+
+
+
+<img width="1533" height="732" alt="image" src="https://github.com/user-attachments/assets/c65528a5-bf4e-48a3-95eb-8def1f518010" />
+
+
+
+
+
 
 ---
 
@@ -198,33 +128,27 @@ python trainer.py configs/Bert_Config_exp5.json
 ```
 
 测试集结果：
-| 类型 | 精确率 | 召回率 | F1 | 样本数 |
-| :--- | :--- | :--- | :--- | :--- |
-| LOC | 0.9413 | 0.913 | 0.9269 | 632 |
-| ORG | 0.8561 | 0.8881 | 0.8718 | 268 |
-| PER | 0.9766 | 0.9252 | 0.9502 | 361 |
-| micro | 0.9319 | 0.9112 | 0.9214 | 1261 |
-| macro | 0.9247 | 0.9087 | 0.9163 | 1261 |
-
+<img width="625" height="247" alt="0ec2d9050992c0bf475f36bf92bc783c" src="https://github.com/user-attachments/assets/91d6efb3-b8e5-4227-b421-af8d787009a9" />
 
 
 #### 训练曲线
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/5d59c1c9-f304-4eab-acba-d6b2f82ab39e" />
+<img width="517" height="340" alt="image" src="https://github.com/user-attachments/assets/73d304b2-0b68-4717-b23b-ed188f5242e3" />
 
-图 4-5 训练曲线 5
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/16ad5b5e-7f41-4c64-b439-c8777941a56a" />
 
-图 4-6 训练曲线 6
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/4c92fce3-0e8d-496e-b417-499f3d8844e7" />
 
-图 4-7 训练曲线 7
+<img width="1541" height="647" alt="image" src="https://github.com/user-attachments/assets/6c80fdff-5baf-416f-a975-e52da8c2a804" />
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/8de7bd09-ffce-401a-94fe-c8ca912e5ebb" />
 
-图 4-8 训练曲线 8
+
+
+
+<img width="1530" height="716" alt="image" src="https://github.com/user-attachments/assets/8c80b0d1-fbc4-49b7-a079-eb97fa9c0e9a" />
+
+
+
 
 
 
@@ -241,39 +165,26 @@ python trainer.py configs/Bert_Config_exp1.json
 ```
 
 测试集结果：
-
-| 类型 | 精确率 | 召回率 | F1 | 样本数 |
-| :--- | :--- | :--- | :--- | :--- |
-| GPE. NAM | 0.7843 | 0.8696 | 0.8247 | 46 |
-| GPE. NOM | 0.0 | 0.0 | 0.0 | 2 |
-| LOC. NAM | 0.2778 | 0.2632 | 0.2703 | 19 |
-| LOC. NOM | 0.4167 | 0.5556 | 0.4762 | 9 |
-| ORG. NAM | 0.5128 | 0.5128 | 0.5128 | 39 |
-| ORG. NOM | 0.5 | 0.5 | 0.5 | 16 |
-| PER. NAM | 0.7545 | 0.7545 | 0.7545 | 110 |
-| PER. NOM | 0.6811 | 0.7545 | 0.7159 | 167 |
-| micro | 0.6659 | 0.7034 | 0.6841 | 408 |
-| macro | 0.4909 | 0.5263 | 0.5068 | 408 |
-
+<img width="662" height="367" alt="85d3292410e7e820e7009a86bbc462bc" src="https://github.com/user-attachments/assets/282501f9-ba5c-4392-9c8a-71f063f90707" />
 
 
 #### 训练曲线
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/8d0735be-21d6-4f48-a3f8-658dba8dec25" />
+<img width="510" height="340" alt="image" src="https://github.com/user-attachments/assets/a7ba94a8-63f5-4c39-b4c6-165b9a80f351" />
 
-图 4-9 训练曲线 9
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/2f0d1b38-adba-4f07-b492-139ca6605f83" />
 
-图 4-10 训练曲线 10
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/fdeb4a17-7dbc-4290-a3c1-36cee6aa44fc" />
+<img width="1535" height="652" alt="image" src="https://github.com/user-attachments/assets/90f9d2ce-7d01-4f30-a880-287a14c67f5f" />
 
-图 4-11 训练曲线 11
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/44cebc81-0f44-4064-b62d-50ba36560d4b" />
 
-图 4-12 训练曲线 12
+
+<img width="1540" height="710" alt="image" src="https://github.com/user-attachments/assets/6050eaa5-25c2-4127-97d1-0882a6148551" />
+
+
+
+
 
 
 
@@ -288,39 +199,28 @@ python trainer.py configs/Bert_Config_exp2.json
 ```
 
 测试集结果：
-
-| 类型 | 精确率 | 召回率 | F1 | 样本数 |
-| :--- | :--- | :--- | :--- | :--- |
-| GPE. NAM | 0.7091 | 0.8478 | 0.7723 | 46 |
-| GPE. NOM | 0.0 | 0.0 | 0.0 | 2 |
-| LOC. NAM | 0.45 | 0.4737 | 0.4615 | 19 |
-| LOC. NOM | 0.2727 | 0.3333 | 0.3 | 9 |
-| ORG. NAM | 0.5588 | 0.4872 | 0.5205 | 39 |
-| ORG. NOM | 0.5 | 0.4375 | 0.4667 | 16 |
-| PER. NAM | 0.7652 | 0.8 | 0.7822 | 110 |
-| PER. NOM | 0.7056 | 0.7605 | 0.732 | 167 |
-| micro | 0.6807 | 0.7157 | 0.6977 | 408 |
-| macro | 0.4952 | 0.5175 | 0.5044 | 408 |
+<img width="632" height="368" alt="720c8a62888f264a46ef6cb2cb933664" src="https://github.com/user-attachments/assets/8977db0f-0f8b-4e66-a8fc-a15479d276a5" />
 
 
 
 #### 训练曲线
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/0ff7803c-a487-4707-a3a4-820c2dd96ce8" />
+<img width="508" height="338" alt="image" src="https://github.com/user-attachments/assets/dd8a76a0-1396-4e4a-bc8c-1a5edeeef03f" />
 
-图 4-13 训练曲线 13
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/aa5dcc17-6dba-4093-8f7a-c053385fc488" />
 
-图 4-14 训练曲线 14
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/0ffcf4cb-3add-4c07-80b3-6f344b78aecf" />
+<img width="1540" height="637" alt="image" src="https://github.com/user-attachments/assets/fdac8f0d-a603-488c-b5c5-c2331927bb38" />
 
-图 4-15 训练曲线 15
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/8eeb9b01-f994-48dd-9813-3bffd32b1c4b" />
 
-图 4-16 训练曲线 16
+
+<img width="1537" height="716" alt="image" src="https://github.com/user-attachments/assets/4da33e2e-c003-4ea1-a1b5-61f0b2a69973" />
+
+
+
+
+
 
 ---
 
@@ -332,37 +232,24 @@ python trainer.py configs/Bert_Config_exp3.json
 ```
 
 测试集结果：
-| 类型 | 精确率 | 召回率 | F1 | 样本数 |
-| :--- | :--- | :--- | :--- | :--- |
-| GPE. NAM | 0.7455 | 0.8913 | 0.8119 | 46 |
-| GPE. NOM | 0.0 | 0.0 | 0.0 | 2 |
-| LOC. NAM | 0.5 | 0.3684 | 0.4242 | 19 |
-| LOC. NOM | 0.4286 | 0.3333 | 0.375 | 9 |
-| ORG. NAM | 0.5625 | 0.4615 | 0.507 | 39 |
-| ORG. NOM | 0.5625 | 0.5625 | 0.5625 | 16 |
-| PER. NAM | 0.72 | 0.6545 | 0.6857 | 110 |
-| PER. NOM | 0.6538 | 0.7126 | 0.6819 | 167 |
-| micro | 0.6626 | 0.6593 | 0.6609 | 408 |
-| macro | 0.5216 | 0.4980 | 0.5060 | 408 |
-
+<img width="610" height="361" alt="06e94e1d0eb70b1f09d5f10fcfab8248" src="https://github.com/user-attachments/assets/2e7f66d1-a964-4931-a256-fcc258895dd0" />
 
 #### 训练曲线
+<img width="522" height="335" alt="image" src="https://github.com/user-attachments/assets/e8a8e31b-1b55-4fe6-bcc3-0ba16aa1100c" />
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/d63ab067-919c-4ed2-a5dd-b0ddaaab340f" />
 
-图 4-17 训练曲线 17
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/98432cc0-d966-44e7-9e0b-4ce2fa38af2a" />
 
-图 4-18 训练曲线 18
+<img width="1527" height="631" alt="image" src="https://github.com/user-attachments/assets/1dfeec43-85fb-49d7-9227-29476ea50af4" />
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/902c2d4f-13c5-467b-97be-6d45b47cd448" />
 
-图 4-19 训练曲线 19
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/62444637-8644-466b-b473-6a89964a8ac4" />
 
-图 4-20 训练曲线 20
+<img width="1532" height="721" alt="image" src="https://github.com/user-attachments/assets/9a5bfd51-e0d5-44f2-8d40-2cf7fe8b20a6" />
+
+
+
+
 
 
 
@@ -393,6 +280,7 @@ BERT-NER-DEMO2/
 ├── model.py
 ├── trainer.py
 ├── utils.py
+├── modeldownload.py
 ├── requirements.txt
 └── README.md
 ```
