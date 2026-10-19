@@ -8,8 +8,10 @@
   "max_len": 512,
   "batch_size": 16,
   "learning_rate": 2e-5,
-  "epochs": 30,
+  "epochs": 12,
+  "patience": 3,
   "seed": 42,
   "save_path": "checkpoints/best_weibo_BERT_ext.pth",
   "align_type": "ignore"
+
 }
