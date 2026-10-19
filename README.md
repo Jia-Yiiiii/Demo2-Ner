@@ -94,16 +94,15 @@ python trainer.py configs/Bert_Config_exp4.json
 ```
 
 测试集结果：
+<img width="367" height="201" alt="image" src="https://github.com/user-attachments/assets/cd1e880a-1367-4ac6-b3dc-293c1a5d198f" />
 
-![测试结果](https://github.com/user-attachments/assets/2611606a-873a-4d98-9d5a-b3ec85f76eb2)
 
 #### 训练曲线
 
-![Loss曲线](https://github.com/user-attachments/assets/0880058d-ae21-470f-85f6-df6f06b68be1)
+<img width="507" height="335" alt="image" src="https://github.com/user-attachments/assets/e4c73de4-6386-40f0-913d-5265d3ab15f4" />
+<img width="1565" height="593" alt="image" src="https://github.com/user-attachments/assets/999a966e-5162-4c1e-b4d8-30f3b1abf281" />
+<img width="1566" height="636" alt="image" src="https://github.com/user-attachments/assets/5f19e3eb-1df3-4ad1-a872-eefba70c7215" />
 
-![P/R/F1曲线](https://github.com/user-attachments/assets/49c064db-a510-4a45-a5fc-e47e2c1415d7)
-
-![详细指标](https://github.com/user-attachments/assets/c65528a5-bf4e-48a3-95eb-8def1f518010)
 
 ---
 
@@ -117,7 +116,8 @@ python trainer.py configs/Bert_Config_exp5.json
 
 测试集结果：
 
-![测试结果](https://github.com/user-attachments/assets/91d6efb3-b8e5-4227-b421-af8d787009a9)
+<img width="357" height="202" alt="image" src="https://github.com/user-attachments/assets/edeed354-d061-427d-8058-2b0ec6da372e" />
+
 
 #### 训练曲线
 
@@ -140,8 +140,8 @@ python trainer.py configs/Bert_Config_exp1.json
 ```
 
 测试集结果：
+<img width="367" height="312" alt="image" src="https://github.com/user-attachments/assets/5ee20eaf-1a36-465e-8983-0c3833daebd2" />
 
-![测试结果](https://github.com/user-attachments/assets/282501f9-ba5c-4392-9c8a-71f063f90707)
 
 #### 训练曲线
 
@@ -163,7 +163,8 @@ python trainer.py configs/Bert_Config_exp2.json
 
 测试集结果：
 
-![测试结果](https://github.com/user-attachments/assets/8977db0f-0f8b-4e66-a8fc-a15479d276a5)
+<img width="343" height="310" alt="image" src="https://github.com/user-attachments/assets/7caca02f-e5b1-41f3-8e40-68bcf12c9209" />
+
 
 #### 训练曲线
 
@@ -185,7 +186,8 @@ python trainer.py configs/Bert_Config_exp3.json
 
 测试集结果：
 
-![测试结果](https://github.com/user-attachments/assets/2e7f66d1-a964-4931-a256-fcc258895dd0)
+<img width="377" height="312" alt="image" src="https://github.com/user-attachments/assets/f752c225-bd39-48e3-b2d6-c34a6417e4a0" />
+
 
 #### 训练曲线
 
