@@ -50,7 +50,6 @@ class Trainer:
         self.test_loader = test_set.get_loader(self.config["batch_size"], False)
         self.label2id = train_set.label2id
         self.id2label = train_set.id2label
-        print(f"标签类别数: {len(self.label2id)} |  映射: {self.label2id}")
 
     def init_model(self):
         self.config["num_labels"] = len(self.label2id)
@@ -69,7 +68,7 @@ class Trainer:
         AutoTokenizer.from_pretrained(self.config["model_path"], use_fast=True).save_pretrained(
             os.path.join(dir_path, f"{name}_tokenizer")
         )
-        print(f"模型已保存至: {dir_path}")
+       
 
     def train(self):
         swanlab.init(project="bert-ner1", config={
@@ -86,6 +85,8 @@ class Trainer:
         optimizer = AdamW(self.model.parameters(), lr=self.config["learning_rate"])
         loss_fn = torch.nn.CrossEntropyLoss(ignore_index=-100)
         weight_path = self.get_path()
+        patience = self.config.get("patience", 3)
+        counter = 0
 
         for epoch in range(self.num_epochs):
             self.model.train()
@@ -96,9 +97,9 @@ class Trainer:
                 optimizer.zero_grad()
                 logits = self.model(input_ids=input_ids, attention_mask=attention_mask)
 
-                valid_mask = (attention_mask.reshape(-1) == 1) & (labels.reshape(-1) != -100)
-                flat_logits = logits.reshape(-1, logits.size(-1))[valid_mask]
-                flat_labels = labels.reshape(-1)[valid_mask]
+                mask = (attention_mask.reshape(-1) == 1) & (labels.reshape(-1) != -100)
+                flat_logits = logits.reshape(-1, logits.size(-1))[mask]
+                flat_labels = labels.reshape(-1)[mask]
 
                 num_valid = flat_labels.numel()
                 total_valid_tokens += num_valid
@@ -128,6 +129,11 @@ class Trainer:
                 self.save_model()
                 print(f"保存最佳模型 | F1: {eval_f1:.4f}")
                 swanlab.log({"best/f1": eval_f1, "best/epoch": epoch + 1})
+                counter = 0
+            else:
+                counter += 1
+                if counter >= patience:
+                    break
 
         print(f"最佳F1: {self.best_f1:.4f}")
         self.test()
@@ -144,9 +150,9 @@ class Trainer:
                 input_ids, attention_mask, labels = [b.to(self.device) for b in batch]
                 logits = self.model(input_ids=input_ids, attention_mask=attention_mask)
 
-                valid_mask = (attention_mask.reshape(-1) == 1) & (labels.reshape(-1) != -100)
-                valid_logits = logits.reshape(-1, logits.size(-1))[valid_mask]
-                valid_labels = labels.reshape(-1)[valid_mask]
+                mask = (attention_mask.reshape(-1) == 1) & (labels.reshape(-1) != -100)
+                valid_logits = logits.reshape(-1, logits.size(-1))[mask]
+                valid_labels = labels.reshape(-1)[mask]
 
                 if valid_labels.numel() > 0:
                     total_loss += loss_fct(valid_logits, valid_labels).item()
