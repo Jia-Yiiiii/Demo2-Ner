@@ -5,7 +5,7 @@
   "dev_file": "weibo/dev.txt",
   "test_file": "weibo/test.txt",
   "dropout_rate": 0.2,
-  "max_len": 128,
+  "max_len": 512,
   "batch_size": 16,
   "learning_rate": 2e-5,
   "epochs": 30,
