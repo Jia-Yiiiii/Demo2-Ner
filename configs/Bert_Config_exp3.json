@@ -13,4 +13,5 @@
   "seed": 42,
   "save_path": "checkpoints/best_weibo_WWM2_ext.pth",
   "align_type": "same"
+  
 }
