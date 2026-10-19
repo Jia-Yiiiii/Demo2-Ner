@@ -25,18 +25,17 @@ class NERDataset(Dataset):
                     parts = line.split()
                     if len(parts) >= 2:
                         tokens.append(parts[0])
-                        labels.append(parts[1] if parts[1] != '0' else 'O')
+                        # 统一处理标签，避免数字0与字母O混淆
+                        tag = parts[1]
+                        labels.append('O' if tag == '0' else tag)
             if tokens:
                 data.append((tokens, labels))
         return data
 
     def get_label_map(self, config):
-
         if 'label2id' in config and config['label2id'] is not None:
             label2id = config['label2id']
-            id2label = {}
-            for k, v in label2id.items():
-                id2label[v] = k
+            id2label = {v: k for k, v in label2id.items()}
             return label2id, id2label
 
         labels = {'O'}
@@ -45,16 +44,11 @@ class NERDataset(Dataset):
                 labels.add(tag)
 
         labels = sorted(labels)
-        label2id = {}
-        id2label = {}
-        for i, label in enumerate(labels):
-            label2id[label] = i
-            id2label[i] = label
-
+        label2id = {label: i for i, label in enumerate(labels)}
+        id2label = {i: label for i, label in enumerate(labels)}
         return label2id, id2label
 
     def align_labels(self, word_ids, tags):
-
         label_ids = []
         prev_wid = -1
         for wid in word_ids:
@@ -73,23 +67,18 @@ class NERDataset(Dataset):
                     label_ids.append(self.label2id.get(label, -100))
                 else:
                     label_ids.append(-100)
-
         return label_ids
 
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
-
         words, tags = self.data[idx]
         return words, tags
 
     def collate_fn(self, batch):
-        words_list = []
-        tags_list = []
-        for words, tags in batch:
-            words_list.append(words)
-            tags_list.append(tags)
+        words_list = [words for words, _ in batch]
+        tags_list = [tags for _, tags in batch]
 
         tokenized = self.tokenizer(
             words_list,
@@ -107,9 +96,7 @@ class NERDataset(Dataset):
             labels.append(torch.tensor(label_ids, dtype=torch.long))
 
         labels = torch.nn.utils.rnn.pad_sequence(
-            labels,
-            batch_first=True,
-            padding_value=-100
+            labels, batch_first=True, padding_value=-100
         )
 
         return tokenized['input_ids'], tokenized['attention_mask'], labels
