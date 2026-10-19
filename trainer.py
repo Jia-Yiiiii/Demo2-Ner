@@ -32,7 +32,7 @@ class Trainer:
         return dir_path
 
     def get_path(self):
-        return os.path.join(self.save_dir(), "best_model.pt")
+        return self.config["save_path"]
 
     def load_data(self):
         tokenizer = AutoTokenizer.from_pretrained(self.config["model_path"], use_fast=True)
@@ -58,9 +58,10 @@ class Trainer:
     def save_model(self):
         dir_path = self.save_dir()
         os.makedirs(dir_path, exist_ok=True)
-        name = "best_model"
+        save_path = self.get_path()
+        name = os.path.splitext(os.path.basename(save_path))[0]
 
-        torch.save(self.model.state_dict(), self.get_path())
+        torch.save(self.model.state_dict(), save_path)
         with open(os.path.join(dir_path, f"{name}_config.json"), "w", encoding="utf-8") as f:
             json.dump(self.config, f, ensure_ascii=False, indent=2)
         with open(os.path.join(dir_path, f"{name}_label2id.json"), "w", encoding="utf-8") as f:
@@ -68,7 +69,6 @@ class Trainer:
         AutoTokenizer.from_pretrained(self.config["model_path"], use_fast=True).save_pretrained(
             os.path.join(dir_path, f"{name}_tokenizer")
         )
-       
 
     def train(self):
         swanlab.init(project="bert-ner1", config={
@@ -90,7 +90,7 @@ class Trainer:
 
         for epoch in range(self.num_epochs):
             self.model.train()
-            total_loss, count, total_valid_tokens = 0, 0, 0
+            total_loss, count = 0, 0
 
             for batch in tqdm(self.train_loader, desc=f"Epoch {epoch + 1}"):
                 input_ids, attention_mask, labels = [b.to(self.device) for b in batch]
@@ -102,7 +102,6 @@ class Trainer:
                 flat_labels = labels.reshape(-1)[mask]
 
                 num_valid = flat_labels.numel()
-                total_valid_tokens += num_valid
                 if num_valid == 0:
                     continue
 
@@ -114,7 +113,6 @@ class Trainer:
                 count += 1
 
             avg_train_loss = total_loss / max(count, 1)
-            print(f"Epoch {epoch+1} 有效标签token数: {total_valid_tokens}")
 
             eval_loss, eval_f1, eval_precision, eval_recall, _, _ = self.eval()
             print(f"第 {epoch + 1} 轮 | 训练loss: {avg_train_loss:.4f} | 验证 P/R/F1: {eval_precision:.4f}/{eval_recall:.4f}/{eval_f1:.4f}")
@@ -133,6 +131,7 @@ class Trainer:
             else:
                 counter += 1
                 if counter >= patience:
+                    print(f"连续 {patience} 轮未提升，触发早停")
                     break
 
         print(f"最佳F1: {self.best_f1:.4f}")
