@@ -5,7 +5,7 @@
   "dev_file": "MSRA/dev_1k.txt",
   "test_file": "MSRA/test_1k.txt",
   "dropout_rate": 0.2,
-  "max_len": 128,
+  "max_len": 512,
   "batch_size": 16,
   "learning_rate": 2e-5,
   "epochs": 30,
