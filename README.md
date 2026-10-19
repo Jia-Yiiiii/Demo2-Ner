@@ -94,7 +94,8 @@ python trainer.py configs/Bert_Config_exp4.json
 测试集结果：
 <img width="640" height="251" alt="7c4088645c68611e7155c7a54ea8da8d" src="https://github.com/user-attachments/assets/2611606a-873a-4d98-9d5a-b3ec85f76eb2" />
 
-
+```
+```
 #### 训练曲线
 
 
